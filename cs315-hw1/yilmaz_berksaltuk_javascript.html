@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+// Author: Berk Saltuk Yılmaz
+// Scope Play in JavaScript
+
+var x = "Mr. Worldwide";
+
+function localCeleb1(){
+    x = "Mr. Localcelebrity"; // Defining a variable without var or let keyword makes it global
+    console.log(`In localCeleb1, x is : ${x}`);
+}
+
+console.log("Before calling localCeleb1, x is : " + x);
+localCeleb1();
+console.log("After calling localCeleb1, x is : " + x);
+
+console.log("-----------------------------------------");
+
+var y = "Mr. Worldwide";
+function localCeleb2(){
+    var y = "Mr. Localcelebrity"; // y is defined only in localCeleb2 function 
+    console.log("In localCeleb2, y is : " + y);
+}
+
+console.log("Before calling localCeleb2, y is : " + y);
+localCeleb2();
+console.log("After calling localCeleb2, y is : " + y);
+
+console.log("-----------------------------------------");
+
+a = "global a";
+b = "global b";
+c = "global c";
+function foo(){
+    var b = "Foo b"
+    function boo(){
+        var b = "I am boo b!"; // No dynamic scoping 
+        c = "I am boo c!"; 
+        loo();
+    }
+
+    function loo(){
+        let c = "Loo c";
+        console.log("In loo, a : " + a + ", b : " + b + ", c : " + c);
+    }
+
+    boo();
+    loo();
+}
+
+console.log("In main before foo, a : " + a + ", b : " + b + ", c : " + c);
+foo();
+console.log("In main after foo, a : " + a + ", b : " + b + ", c : " + c);
+//loo();
+
+console.log("-----------------------------------------");
+
+// Block scoping!
+var berk = "I hate being in blocks!";
+var tiny = "I'd like to have a juicy steak!";
+console.log("In main before block berk says: " + berk + ", tiny says: " + tiny);
+{
+    var berk = "Who put me in a block? I said that I hate it!";
+    let tiny = "Please take me out!"; // let keyword creates block scope
+    console.log("In block berk says: " + berk + ", tiny says: " + tiny);
+}
+console.log("In main after block berk says: " + berk + ", tiny says: " + tiny);
+
+console.log("-----------------------------------------");
+
+// Scoping in a loop
+var loopVar = "I feel normal";
+var loopVar2 = "I do not feel normal";
+console.log("In main #1, loopVar says: " + loopVar + ", loopVar2 says : " +loopVar2);
+
+for( let i = 0; i < 5; i++)
+{
+    let loopVar = "I feel like in a loop";
+    var loopVar2 = "I feel normal now";
+    console.log("in for loop, loopVar says: " + loopVar + ", loopVar2 says : " +loopVar2);
+}
+
+console.log("In main #2, loopVar says: " + loopVar + ", loopVar2 says : " +loopVar2);
+// console.log(i)
+console.log("-----------------------------------------");
+console.log("Unlike Perl, JS also does not have such thing as package scoping.");
+</script>
+</body>
+</html>

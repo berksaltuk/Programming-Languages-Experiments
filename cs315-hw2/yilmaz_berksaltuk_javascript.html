@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script>
+// Author: Berk Saltuk Yılmaz
+// Loops in JavaScript
+
+// C Type Loop
+for( let i = 0; i < 4; i++)
+{
+    console.log(`LLOOOOPP ${i}`)
+}
+
+// Also in JavaScript init, cond, incr parts are optional
+
+// for(;;){
+//     console.log("To infinity and beyond");
+// } // This is an infinite loop as in Perl :)
+
+////////////////////////////////////////////////////////////////////
+//!!NOT!! logically controlled but you can try them also if you want
+// Iterating array with for ... of ... loop
+// favShows = ['Bojack', 'BrBa', 'SoA', 'The Office', 'Dexter']
+// for( let show of favShows){
+//     console.log(show)
+// }
+// // There is also a for ... in ... loop to iterate through objects!
+// const favShows2 = {
+//     1: "Bojack",
+//     2: "The Office",
+//     3: "Dexter",
+//     4: "BrBa",
+//     5: "SoA"
+// }
+// for( let index in favShows2){
+//     console.log(`Show #${index} is ${favShows2[index]}`)
+// }
+/////!!NOT!! logically controlled but you can try them also if you want
+////////////////////////////////////////////////////////////////////
+
+// While loops!
+let num = 0;
+while( num < 4)
+{
+    console.log(`There are ${num} assignment(s) left`)
+    num++;
+}
+
+/**
+ * let num = 0;
+ * while(true){
+ *  console.log(`There are ${num} assignment(s) left`)
+ *  num++;
+ * } // Infinite loop and reality of Bilkent!
+ */
+
+// There is also do-while in JS
+
+i = 1;
+do{
+    console.log(`${i} brain cells left...`)
+    i--;
+}while( i >= 0)
+
+// I tried to write until loop JS said "Am I a joke to you?"
+// I concluded that there is no until loop in JS
+
+// Loop Controls!!!
+// break
+for( let i = 0; i < 5; i++){
+    for( let j = 0; j < 2; j++){
+        if( i === 1){
+            console.log("No, I warned this lad i about being 1! I will break it!");
+            break;
+        }
+        console.log(`i is ${i}, j is ${j}`);
+    }
+}
+
+// continue
+i = 0;
+while( i < 6)
+{
+    i++;
+    if( i % 2 === 0){
+        console.log("I hate even numbers!");
+        continue;
+    }
+    console.log(i)
+}
+
+// Labels!!!
+countOut: 
+for( let i = 1; i < 100; i++){
+    for( let j = 1; j < 10; j++){
+        console.log(`Looping... i = ${i}, j = ${j}`)
+        if( i === 2){
+           console.log("C'mon I do not have time for looping 1000 times!");
+          break countOut;
+        }
+    }
+}
+
+forLabel1:
+for(let i = 1; i < 6; i++){
+    forLabel2:
+    for(let j = 1; j < 5; j++)
+    {
+        if( i % 2 === 0 && j % 2 === 0)
+        {
+            console.log("You cannot be even numbers!");
+            continue forLabel1;
+        }
+        else if( j % 2 === 0){
+            console.log("Go away even j!");
+            continue forLabel2;
+        }
+        console.log(`Looping... i = ${i}, j = ${j}`)
+    }
+}
+
+// That's all for JS! :)
+</script>
+</body>
+</html>
